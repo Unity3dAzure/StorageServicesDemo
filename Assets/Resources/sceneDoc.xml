@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scene>
+	<levels>
+		<level number="1">
+			<prefabs>
+				<prefab name="CloudCube">
+					<color>cyan</color>
+					<location>1,4,0</location>
+					<scale>1,1,2</scale>
+				</prefab>
+				<prefab name="CloudCube">
+					<color>magenta</color>
+					<location>-1,4,0</location>
+					<scale>1,2,1</scale>
+				</prefab>
+			</prefabs>
+		</level>
+	</levels>
+</scene>
