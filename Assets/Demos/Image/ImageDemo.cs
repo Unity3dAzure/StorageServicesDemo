@@ -55,8 +55,8 @@ public class ImageDemo : MonoBehaviour
 		string filename = string.Format ("{0}.png", DateTime.UtcNow.ToString ("yy-MM-dd-HH-mm-ss-ff"));
 		localPath = Screenshot.Capture (filename);
 		isCaptured = true;
-        label.text = "Capture as: " + localPath;
-    }
+		label.text = "Capture as: " + localPath;
+	}
 
 	public void TappedSave ()
 	{
@@ -135,6 +135,6 @@ public class ImageDemo : MonoBehaviour
 
 	public void TappedNext ()
 	{
-		SceneManager.LoadScene ("AssetBundleScene");
+		SceneManager.LoadScene ("ListScene");
 	}
 }

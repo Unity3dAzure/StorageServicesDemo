@@ -59,8 +59,6 @@ namespace Unity3dAzure.StorageServices
 			HttpStatusCode statusCode = (HttpStatusCode)Enum.Parse (typeof(HttpStatusCode), request.responseCode.ToString ());
 			RestResult result = new RestResult (statusCode);
 
-			Debug.Log ("Get Rest Result code:" + request.responseCode + " error:" + request.isError + " url:" + request.url);
-
 			if (result.IsError) {
 				result.ErrorMessage = "Response failed with status: " + statusCode.ToString ();
 				return result;
