@@ -3,9 +3,9 @@ Contains a Unity 5.5 project featuring 4 demo scenes for Azure Blob Storage.
 1. Capture PNG screenshot (image blob)  
 2. Record .WAV audio clip (audio blob)  
 3. Save and Load .unity Asset Bundles (binary blob)  
-   - Save/Load XML file to load Asset Bundle prefabs to scene
-   - Save/Load JSON file to load Asset Bundle prefabs to scene
-4. List and delete blobs
+   - Save/Load XML file to load Asset Bundle prefabs to scene  
+   - Save/Load JSON file to load Asset Bundle prefabs to scene  
+4. List and delete blobs  
 
 # Setup Azure Storage Service for Unity3d
 1. Create Azure Storage Service
