@@ -8,6 +8,8 @@ Contains a Unity 5.5 project featuring several demo scenes for Azure Blob Storag
   - Save/Load JSON file to load Asset Bundle prefabs to scene  
 4. List and delete blobs 
 
+[![Blob storage Unity demo video](https://j.gifs.com/98zOxZ.gif)](https://youtu.be/0gpg2xwusjM)
+
 # Setup Azure Storage Service for Unity3d
 1. Create Azure Storage Service
 2. Create 'Blob' storage container (public read access is required for this demo).
