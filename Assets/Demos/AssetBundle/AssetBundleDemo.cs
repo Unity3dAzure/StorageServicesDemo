@@ -67,7 +67,7 @@ public class AssetBundleDemo : MonoBehaviour
 	{
 		UnloadAssetBundle ();
 		string filename = assetBundleName + "-" + GetAssetBundlePlatformName () + ".unity3d";
-		string url = Path.Combine (client.SecondaryEndpoint () + container, filename);
+		string url = Path.Combine (client.PrimaryEndpoint () + container, filename);
 		Log.Text (label, "Load asset bundle: " + url, "Load asset bundle: " + url);
 		StartCoroutine (LoadAssetBundleURL (url));
 	}

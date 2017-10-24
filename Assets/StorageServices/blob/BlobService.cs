@@ -46,7 +46,7 @@ namespace Unity3dAzure.StorageServices
 		public IEnumerator GetTextBlob (Action<RestResponse> callback, string resourcePath = "")
 		{
 			// public request
-			string url = UrlHelper.BuildQuery (client.SecondaryEndpoint (), "", resourcePath);
+			string url = UrlHelper.BuildQuery (client.PrimaryEndpoint (), "", resourcePath);
 			StorageRequest request = new StorageRequest (url, Method.GET);
 			yield return request.request.Send ();
 			request.Result (callback);
