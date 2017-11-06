@@ -9,6 +9,13 @@ Contains a Unity 5.5 project featuring several demo scenes for Azure Blob Storag
 4. List and delete blobs 
 5. Save and Load .txt file (text blob)
 
+## :octocat: Download instructions
+This project contains git submodule dependencies so use:  
+    `git clone --recursive https://github.com/Unity3dAzure/StorageServicesDemo.git`  
+    
+Or if you've already done a git clone then use:  
+    `git submodule update --init --recursive`  
+
 [![Blob storage Unity demo video](https://j.gifs.com/98zOxZ.gif)](https://youtu.be/0gpg2xwusjM)
 
 # Setup Azure Storage Service for Unity3d
@@ -22,6 +29,11 @@ Contains a Unity 5.5 project featuring several demo scenes for Azure Blob Storag
 ![Blob Access type](https://cloud.githubusercontent.com/assets/1880480/23862822/eab8f21e-0805-11e7-96f0-2d8e7bcb368b.png "Blob")
 5. Select 'Keys' under Settings to copy blob storage details for Unity Editor inspector  
 ![Storage Keys](https://cloud.githubusercontent.com/assets/1880480/23958521/4ea59a80-099a-11e7-9795-e7421ece544c.png "Settings > Keys")
+
+# How to upload blobs to Blob storage
+1. Download [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) and sign in to access your storage accounts.  
+2. Drag and drop files into container to upload blobs.  
+![Upload blobs using Azure Storage Explorer](https://user-images.githubusercontent.com/1880480/32448554-1c10a304-c307-11e7-8768-75343b3bb9fd.png)
 
 # Credits
 - Sound effects from [downloadfreesound.com](http://www.downloadfreesound.com)
