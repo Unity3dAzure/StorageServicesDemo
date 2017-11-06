@@ -17,10 +17,10 @@ public class Screenshot
 		//case RuntimePlatform.WSAPlayerARM:
 		//case RuntimePlatform.WSAPlayerX64:
 		//case RuntimePlatform.WSAPlayerX86:
-			Application.CaptureScreenshot (filename);
+			ScreenCapture.CaptureScreenshot (filename);
 			break;
 		default:
-			Application.CaptureScreenshot (filePath);
+			ScreenCapture.CaptureScreenshot (filePath);
 			break;
 		}
 

@@ -7,6 +7,7 @@ Contains a Unity 5.5 project featuring several demo scenes for Azure Blob Storag
   - Save/Load XML file to load Asset Bundle prefabs to scene
   - Save/Load JSON file to load Asset Bundle prefabs to scene  
 4. List and delete blobs 
+5. Save and Load .txt file (text blob)
 
 [![Blob storage Unity demo video](https://j.gifs.com/98zOxZ.gif)](https://youtu.be/0gpg2xwusjM)
 
@@ -26,9 +27,14 @@ Contains a Unity 5.5 project featuring several demo scenes for Azure Blob Storag
 - Sound effects from [downloadfreesound.com](http://www.downloadfreesound.com)
 
 # Dependencies included
-- [StorageServices](https://github.com/Unity3dAzure/StorageServices) for Unity
 - [TSTableView](https://bitbucket.org/tacticsoft/tstableview) is used to display recyclable list of results.
 
+## Dependencies installed as git submodules 
+* [StorageServices](https://github.com/Unity3dAzure/StorageServices) for Unity.  
+* [RESTClient](https://github.com/Unity3dAzure/RESTClient) for Unity.  
+
+Refer to the download instructions above to install these submodules.
+
 # Notes
-The Storage Services library used in this demo is currently in early beta, so not all APIs are supported yet and some things may change.
+The Storage Services library used in this demo is currently in beta, so not all APIs are supported yet and some things may change.
 Questions or tweet #Unity #Azure [@deadlyfingers](http://twitter.com/deadlyfingers)

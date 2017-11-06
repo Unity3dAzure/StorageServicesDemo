@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using RESTClient;
+using Azure.StorageServices;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-using Unity3dAzure.StorageServices;
 using System.IO;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
@@ -95,9 +96,9 @@ public class ImageDemo : MonoBehaviour
 
 	public IEnumerator LoadImageURL (string url)
 	{
-		UnityWebRequest www = UnityWebRequest.GetTexture (url);
+		UnityWebRequest www = UnityWebRequestTexture.GetTexture (url);
 		yield return www.Send ();
-		if (www.isError) {
+		if (www.isNetworkError) {
 			Log.Text (label, "Failed to load image: " + url, www.error, Log.Level.Error);
 		} else {
 			Texture texture = ((DownloadHandlerTexture)www.downloadHandler).texture;

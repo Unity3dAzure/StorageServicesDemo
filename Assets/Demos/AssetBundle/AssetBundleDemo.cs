@@ -1,7 +1,8 @@
-﻿using System.Collections;
+﻿using RESTClient;
+using Azure.StorageServices;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity3dAzure.StorageServices;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
@@ -76,7 +77,7 @@ public class AssetBundleDemo : MonoBehaviour
 	{
 		UnityWebRequest www = UnityWebRequest.GetAssetBundle (url);
 		yield return www.Send ();
-		if (www.isError) {
+		if (www.isNetworkError) {
 			Log.Text (label, "Load url: " + url, www.error, Log.Level.Error);
 			yield break;
 		} else {
@@ -162,7 +163,7 @@ public class AssetBundleDemo : MonoBehaviour
 
 	public void TappedSaveXML ()
 	{
-		XmlDocument xml = XMLHelper.LoadResourceDocument ("sceneDoc");
+		XmlDocument xml = XmlHelper.LoadResourceDocument ("sceneDoc");
 		Debug.Log (xml.OuterXml);
 		StartCoroutine (blobService.PutTextBlob (PutXmlCompleted, xml.OuterXml, container, saveFileXML, "application/xml"));
 	}
@@ -185,7 +186,7 @@ public class AssetBundleDemo : MonoBehaviour
 
 	private void LoadResourcesXML (string filename)
 	{
-		string xml = XMLHelper.LoadResourceText (filename);
+		string xml = XmlHelper.LoadResourceText (filename);
 		ProcessSceneXML (xml);
 	}
 
@@ -193,7 +194,7 @@ public class AssetBundleDemo : MonoBehaviour
 	{
 		UnityWebRequest www = UnityWebRequest.Get (url);
 		yield return www.Send ();
-		if (www.isError || www.responseCode != 200L) {
+		if (www.isNetworkError || www.responseCode != 200L) {
 			Log.Text (label, "Tap 'Save XML' first", www.responseCode + " Failed to load XML: " + url, Log.Level.Warning);
 		} else {
 			string xml = www.downloadHandler.text;
@@ -204,7 +205,7 @@ public class AssetBundleDemo : MonoBehaviour
 
 	private void ProcessSceneXML (string xml)
 	{
-		SceneDoc sceneData = XMLHelper.FromXml<SceneDoc> (xml);
+		SceneDoc sceneData = XmlHelper.FromXml<SceneDoc> (xml);
 		Debug.LogFormat ("Levels: {0}", sceneData.Levels.Length);
 
 		if (sceneData.Levels.Length <= 0) {
@@ -266,7 +267,7 @@ public class AssetBundleDemo : MonoBehaviour
 	{
 		UnityWebRequest www = UnityWebRequest.Get (url);
 		yield return www.Send ();
-		if (www.isError || www.responseCode != 200L) {
+		if (www.isNetworkError || www.responseCode != 200L) {
 			Log.Text (label, "Tap 'Save JSON' first", www.responseCode + " Failed to load JSON: " + url, Log.Level.Warning);
 		} else {
 			string json = www.downloadHandler.text;

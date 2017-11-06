@@ -1,7 +1,8 @@
-﻿using System.Collections;
+﻿using RESTClient;
+using Azure.StorageServices;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity3dAzure.StorageServices;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
@@ -156,9 +157,9 @@ public class AudioDemo : MonoBehaviour
 
 	private IEnumerator LoadAudioURL (string url)
 	{
-		UnityWebRequest www = UnityWebRequest.GetAudioClip (url, AudioType.WAV);
+		UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip (url, AudioType.WAV);
 		yield return www.Send ();
-		if (www.isError) {
+		if (www.isNetworkError) {
 			Log.Text (label, "Failed to load audio: " + url, www.error, Log.Level.Warning);
 		} else {
 			AudioClip audioClip = ((DownloadHandlerAudioClip)www.downloadHandler).audioClip;
