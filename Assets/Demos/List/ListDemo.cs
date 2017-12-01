@@ -38,7 +38,7 @@ public class ListDemo : MonoBehaviour, ITableViewDataSource
       Log.Text(label, "Storage account and access key are required", "Enter storage account and access key in Unity Editor", Log.Level.Error);
     }
 
-    client = new StorageServiceClient(storageAccount, accessKey);
+    client = StorageServiceClient.Create(storageAccount, accessKey);
     blobService = client.GetBlobService();
 
     items = new List<Blob>();
