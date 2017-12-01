@@ -36,7 +36,7 @@ public class TextDemo : MonoBehaviour
       Log.Text(label, "Storage account and access key are required", "Enter storage account and access key in Unity Editor", Log.Level.Error);
     }
 
-    client = new StorageServiceClient(storageAccount, accessKey);
+    client = StorageServiceClient.Create(storageAccount, accessKey);
     blobService = client.GetBlobService();
   }
 
@@ -48,6 +48,7 @@ public class TextDemo : MonoBehaviour
 
   public void TappedSaveText()
   {
+    ChangeLabelText("Saving...");
     string text = !string.IsNullOrEmpty(inputField.text) ? inputField.text : "hello";
     StartCoroutine(blobService.PutTextBlob(PutTextBlobComplete, text, container, filename));
   }
@@ -56,31 +57,27 @@ public class TextDemo : MonoBehaviour
   {
     if (response.IsError)
     {
-      Debug.Log(response.ErrorMessage + " Error putting blob:" + response.Content);
+      Log.Text(label, response.ErrorMessage + " Error putting blob:" + response.Content);
       return;
     }
-    Debug.Log("Put blob:" + response.Content);
+    Log.Text(label, "Put blob status:" + response.StatusCode);
   }
 
   public void TappedLoadText()
   {
-    string url = Path.Combine(client.PrimaryEndpoint() + container, filename);
-    StartCoroutine(LoadTextURL(url));
+    ChangeLabelText("Loading...");
+    string resourcePath = container + "/" + filename;
+    StartCoroutine(blobService.GetTextBlob(GetTextBlobComplete, resourcePath));
   }
 
-  private IEnumerator LoadTextURL(string url)
+  private void GetTextBlobComplete(RestResponse response)
   {
-    UnityWebRequest www = UnityWebRequest.Get(url);
-    yield return www.Send();
-    if (www.isNetworkError)
+    if (response.IsError)
     {
-      Log.Text(label, "Failed to load text: " + url, www.error, Log.Level.Error);
+      Log.Text(label, response.ErrorMessage + " Error getting blob:" + response.Content);
+      return;
     }
-    else
-    {
-      string text = ((DownloadHandler)www.downloadHandler).text;
-      ChangeLabelText(text);
-    }
+    Log.Text(label, "Get blob:" + response.Content);
   }
 
   private void ChangeLabelText(string text)
